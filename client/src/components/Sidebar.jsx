@@ -1,5 +1,5 @@
 import React from 'react'
-import assets from '../assets/assets'
+import assets, { userDummyData } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
 const Sidebar = ({ selectedUser, setSelectedUser }) => {
@@ -36,6 +36,16 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
         </div>
 
       </div>
+
+      <div className = 'flex flex-col'>
+        {userDummyData.map((user, index)=> (
+            <div>
+              <img src = {user?.profilePic || assets.avatar_icon} alt = ""
+              className = 'w-[35px] aspect-[1/1] rounded-full' />
+            </div>
+          ))}
+      </div>
+
     </div>
   )
 }
