@@ -1,11 +1,17 @@
 import React from 'react'
+import { Routes } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
+import ProfilePage from './pages/ProfilePage'
 
 const App = () => {
   return ( 
-    <div className = "bg-black text-white p-10">
-      <h1 className = "text-3xl font-bold">
-        Tailwind Working
-      </h1>
+    <div>
+      <Routes>
+        <Route path = '/' element= {<HomePage />}/>
+        <Route path = '/login' element= {<LoginPage />}/>
+        <Route path = '/profile' element= {<ProfilePage />}/>
+      </Routes>
     </div>
   )
 }
