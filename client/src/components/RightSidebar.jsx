@@ -31,6 +31,12 @@ const RightSidebar = ({selectedUser}) => {
 					))}		
 				</div>
 			</div>
+
+			<button className='mt-6 ml-5 bg-gradient-to-r
+    		from-purple-400 to-violet-600 text-white border-none text-sm font-light py-2
+    		px-20 rounded-full cursor-pointer'>
+    			Logout
+			</button>
 		</div>
 	)
 }
