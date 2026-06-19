@@ -25,7 +25,7 @@ const LoginPage = () => {
 			    	<img src = {assets.arrow_icon} alt="" className = 'w-5 cursor-pointer' />
 			    </h2>
 			    {currState === "Sign up" && !isDataSubmitted && (
-			    	<input  onChange={(e)=>setFull(e.target.value)} value = {email}
+			    	<input  onChange={(e)=>setFullName(e.target.value)} value = {email}
 			    	 type = "text" className = 'p-2 border border-gray-500 rounded-md 
 			    		focus:outline-none' placeholder="Full Name" required />	
 			    )}
@@ -34,6 +34,11 @@ const LoginPage = () => {
 			    	<>
 			    	<input onChange={(e)=>setEmail(e.target.value)} value = {email} 
 			    		type = "email" placeholder = 'Email Address' required 
+			    		className = 'p-2 border border-gray-500 rounded-md focus:outline-none
+			    		focus:ring-2 focus:ring-indigo-500'/>
+
+			    	<input onChange={(e)=>setPassword(e.target.value)} value = {password} 
+			    		type = "password" placeholder = 'Password' required 
 			    		className = 'p-2 border border-gray-500 rounded-md focus:outline-none
 			    		focus:ring-2 focus:ring-indigo-500'/>
 			    	</>
