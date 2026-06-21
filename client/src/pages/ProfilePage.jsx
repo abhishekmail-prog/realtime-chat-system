@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import assets from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 const ProfilePage = () => {
+
+	const [selectedImg, setSelectedImg] = useState(null)
+	const navigate = useNavigate();
+	const [name, setName] = useState("Martin Johnson")
+	const [bio, setBio] = useState("Hi Everyone, I am using QuickChat")
+
 	return (
 		<div className = 'min-h-screen bg-cover bg-no-repeat flex items-center
 		justify-center' >
@@ -11,7 +19,12 @@ const ProfilePage = () => {
 					<h3 className = 'text-lg' >Profile details</h3>
 					<label htmlFor = "avatar" className = 'flex items-center gap-3
 						cursor-pointer' >
-						<input type="file" id = 'avatar' accepts = '.png, .jpg. jpeg' />
+						<input onChange={(e)=>setSelectedImg(e.target.files[0])} 
+							type="file" id = 'avatar' accept = '.png, .jpg. jpeg' hidden />
+						<img src={selectedImg ? URL.createObjectURL(selectedImg) : 
+						assets.avatar_icon} alt="" className = {`w-12 h-12 ${selectedImg && 
+							'rounded-full'}`} />
+							upload profile image
 					</label>
 				</form>
 				<img src = "" alt = "" />
