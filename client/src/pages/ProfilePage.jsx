@@ -26,6 +26,10 @@ const ProfilePage = () => {
 							'rounded-full'}`} />
 							upload profile image
 					</label>
+					<input onChange={(e)=>setName(e.target.value)} value={name} 
+						type="text" required placeholder='Your name' className='p-2 bg-transparent border
+						border-gray-500 rounded-md focus:outline-none focus:ring-2
+						focus:ring-violet-500' />
 				</form>
 				<img src = "" alt = "" />
 			</div>
