@@ -30,6 +30,10 @@ const ProfilePage = () => {
 						type="text" required placeholder='Your name' className='p-2 bg-transparent border
 						border-gray-500 rounded-md focus:outline-none focus:ring-2
 						focus:ring-violet-500' />
+						<textarea onChange={(e)=>setBio(e.target.value)} value={bio}
+							placeholder="Write profile bio" required className = 'p-2 text-black
+							border border-gray-500 rounded-md focus:outline-none focus:ring-2
+							focus:ring-violet-500 ' rows={4}></textarea>
 				</form>
 				<img src = "" alt = "" />
 			</div>
