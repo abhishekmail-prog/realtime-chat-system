@@ -23,7 +23,7 @@ const LoginPage = () => {
 		<div className='min-h-screen flex items-center justify-center gap-8 
 			sm:justify-evenly max-sm:flex-col'>
 			{/*---- left ----*/}
-			<img src = {assets.logo_big} alt = "" className = 'w-[min(30vw,250px)]' />
+			<img src = {assets} alt = "" className = 'w-[min(30vw,250px)]' />
 			{/*---- right ----*/}
 
 			<form onSubmit={onSubmitHandler} className='border-2 bg-black text-white border-gray-500 p-6 flex flex-col 

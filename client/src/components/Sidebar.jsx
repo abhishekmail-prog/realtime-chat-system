@@ -11,7 +11,7 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
     >
       <div className="pb-5">
         <div className="flex justify-between items-center">
-          <img src={assets.logo} alt="logo" className="max-w-40"/>
+          <img src={assets} alt="logo" className="max-w-40"/>
 
           <div className="relative py-2 group">
             <img src={assets.menu_icon} alt="Menu" className="max-h-5 cursor-pointer"/>
@@ -45,7 +45,7 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
                                   'bg-[#282142]/50'}`}>
               <img src = {user?.profilePic || assets.avatar_icon} alt = ""
               className = 'w-[35px] aspect-[1/1] rounded-full' />
-              <div className = 'flex flex-col leading-5'>
+              <div className = 'flex flex-csol leading-5'>
                 <p>{user.fullName}</p>
                 {
                   index < 3
