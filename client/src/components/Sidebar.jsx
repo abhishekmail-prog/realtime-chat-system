@@ -21,7 +21,7 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
               <p onClick={() => navigate('/profile')} className="cursor-pointer text-sm">
                 Edit Profile
               </p>
-              <hr className="my-2 border-t border-gray-500" />
+              <hr className="my-2 border-t border-[#2A1F3D]" />
               <p className="cursor-pointer text-sm">
                 Logout
               </p>
