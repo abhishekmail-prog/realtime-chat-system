@@ -6,12 +6,12 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
   const navigate = useNavigate()
 
   return (
-    <div className={`bg-[#818582]/10 h-full p-5 rounded-r-xl overflow-y-scroll
+    <div className={`bg-[#181224]/10 h-full p-5 rounded-r-xl overflow-y-scroll
       text-white ${selectedUser ? 'max-md:hidden' : ''}`}
     >
       <div className="pb-5">
         <div className="flex justify-between items-center">
-          <img src={assets} alt="logo" className="max-w-40"/>
+          <img src={assets.vibechat_logo} alt="Vibe Chat" className="max-w-40"/>
 
           <div className="relative py-2 group">
             <img src={assets.menu_icon} alt="Menu" className="max-h-5 cursor-pointer"/>
@@ -29,10 +29,10 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
           </div>
         </div>
 
-        <div className = 'bg-[#282142] rounded-full flex items-center gap-2 py-3 px-4 mt-5'>
+        <div className = 'bg-[#221933] rounded-full flex items-center gap-2 py-3 px-4 mt-5 border border-[#2A1F3D]'>
           <img src = {assets.search_icon} alt = "Search" className = 'w-3' />
           <input type = "text" className = 'bg-transparent border-none outline-none text-white text-xs
-                          placeholder-[#c8c8c8] flex-1' placeholder='Search User...'/>
+                          placeholder-[#B8AFCF] flex-1' placeholder='Search User...'/>
         </div>
 
       </div>
@@ -40,21 +40,23 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
       <div className = 'flex flex-col'>
         {userDummyData.map((user, index)=> (
             <div onClick = {()=> {setSelectedUser(user)}}
-              key ={index} className = {`relative flex items-center gap-2 p-2 pl-4 rounded 
-                                cursor-pointer max-sm:text-sm ${selectedUser?._id == user._id && 
-                                  'bg-[#282142]/50'}`}>
+              key ={index} className = {`relative flex items-center gap-2 
+              p-2 pl-4 rounded cursor-pointer hover:bg-[#2A1F3D]/40 
+              transition-all duration-200 max-sm:text-sm ${selectedUser?._id == user._id && 
+              'bg-[#2A1F3D] shadow-[0_0_15px_rgba(168,85,247,0.25)]'}`}>
               <img src = {user?.profilePic || assets.avatar_icon} alt = ""
               className = 'w-[35px] aspect-[1/1] rounded-full' />
-              <div className = 'flex flex-csol leading-5'>
+              <div className = 'flex flex-col leading-5'>
                 <p>{user.fullName}</p>
                 {
                   index < 3
-                  ? <span className = 'text-green-400 text-xs'>Online</span>
-                  : <span className = 'text-neutral-400 text-xs'>Offline</span>
+                  ? <span className = 'text-[#22C55E]text-xs'>Online</span>
+                  : <span className = 'text-[#BBAFCF] text-xs'>Offline</span>
                 }
               </div>
               {index > 2 && <p className = 'absolute top-4 right-4 text-xs h-5 w-5 
-                                flex justify-center items-center rounded-full bg-violet-500/50'>{index}</p>}
+                                flex justify-center items-center rounded-full bg-[#A855F7] 
+                                text-white'>{index}</p>}
             </div>
           ))}
       </div>

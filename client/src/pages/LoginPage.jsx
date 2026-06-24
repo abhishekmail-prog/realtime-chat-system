@@ -23,7 +23,7 @@ const LoginPage = () => {
 		<div className='min-h-screen flex items-center justify-center gap-8 
 			sm:justify-evenly max-sm:flex-col bg-[#0D0916]'>
 			{/*---- left ----*/}
-			<img src = {assets.vibechat_logo} alt = "" className = 'w-[min(30vw,250px)]' />
+			<img src = {assets.vibechat_icon} alt = "" className = 'w-[min(30vw,250px)]' />
 			{/*---- right ----*/}
 
 			<form onSubmit={onSubmitHandler} className='border-2 bg-[#181224] text-[#F5F3FF] border-[#2A1F3D] p-6 flex flex-col	 

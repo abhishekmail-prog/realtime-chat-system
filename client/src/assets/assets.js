@@ -21,7 +21,8 @@ import pic3 from './pic3.png'
 import pic4 from './pic4.png'
 import img1 from './img1.jpg'
 import img2 from './img2.jpg'
-import vibechat_logo from './Vibechat_icon.png'
+import vibechat_icon from './Vibechat_icon.png'
+import vibechat_logo from './Vibechat_logo.png'
 
 const assets = {
     avatar_icon,
@@ -37,6 +38,7 @@ const assets = {
     code,
     bgImage,
     profile_martin,
+    vibechat_icon,
     vibechat_logo
 }
 
