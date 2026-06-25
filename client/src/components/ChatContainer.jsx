@@ -57,7 +57,7 @@ const ChatContainer = ({selectedUser, setSelectedUser}) => {
 {/*---- bottom area ----*/}
 		<div className = 'absolute bottom-0 left-0 right-0 flex items-center gap-3 p-3'>
 
-			<div className='flex-1 flex items-center bg-[#221933] backdrop-blur-md border border-[#2A1F3D] px-4 py-1 rounded-full'>
+			<div className='flex-1 flex items-center bg-[#221933] backdrop-blur-md border border-[#2A1F3D] px-4 py-0.5 rounded-full'>
   				<input type='text' placeholder='Type a message...' 
   					className='flex-1 bg-transparent text-sm p-3 outline-none text-[#F5F3FF] placeholder-[#B8AFCF]'/>
 
