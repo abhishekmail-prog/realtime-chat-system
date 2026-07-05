@@ -5,8 +5,6 @@ import http from "http";
 import { connectDB } from "./lib/db.js";
 import userRouter from "./routes/userRouter.js";
 import messageRouter from "./routes/messageRoutes.js";
-import cors from "cors";
-import http from "http";
 import { Server } from "socket.io";
 
 
@@ -24,7 +22,7 @@ export const userSocketMap = {};// { userId: socketId }
 
 // Socket.io connection handler
 io.on("connection", (socket)=>{
-	const userId = socket.handshake.query,userId;
+	const userId = socket.handshake.query.userId;
 	console.log("User Connected", userId);
 
 	if(userId) userSocketMap[userId] = socket.id;
@@ -32,7 +30,7 @@ io.on("connection", (socket)=>{
 	// Emit online users to all connected clients
 	io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
-	socket.on("disconnect". ()=>{
+	socket.on("disconnect", ()=>{
 		console.log("User Disconnected", userId);
 		delete userSocketMap[userId];
 		io.emit("getOnlineUsers", Object.keys(userSocketMap))
