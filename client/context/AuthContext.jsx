@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import {io} from "socket.io-client";
@@ -59,6 +59,7 @@ export const AuthProvider = ({ children })=>{
 		toast.success("Logged out successfully")
 		if(socket) {
 			socket.disconnect();
+			setSocket(null);
 		}
 	}
 
@@ -87,17 +88,17 @@ export const AuthProvider = ({ children })=>{
 		newSocket.connect();
 		setSocket(newSocket);
 
-		newSocket.ON("getOnlineUsers", (usersId)=>{
+		newSocket.on("getOnlineUsers", (usersId)=>{
 			setOnlineUsers(usersId);
 		})
 	}
 
-	usseEffect(()=>{
+	useEffect(()=>{
 		if(token) {
 			axios.defaults.headers.common["token"] = token;
+			checkAuth();
 		}
-		checkAuth
-	},[])
+	},[token])
 
 
 	const value = {
