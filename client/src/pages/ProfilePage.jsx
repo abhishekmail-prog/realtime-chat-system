@@ -20,10 +20,10 @@ const ProfilePage = () => {
 			return;
 		}
 
-		const render = new FileRender();
-		render.readAsDataURL(selectedImg);
-		render.onload = async ()=>{
-			const base64Image = render.result;
+		const reader = new FileReader();
+		reader.readAsDataURL(selectedImg);
+		reader.onload = async ()=>	{
+			const base64Image = reader.result;
 			await updateProfile({profilePic: base64Image, fullName: name, bio})
 			navigate('/');
 		}
@@ -46,9 +46,10 @@ const ProfilePage = () => {
 					<label htmlFor = "avatar" className = 'flex items-center gap-3
 						cursor-pointer' >
 						<input onChange={(e)=>setSelectedImg(e.target.files[0])} 
-							type="file" id = 'avatar' accept = '.png, .jpg. jpeg' hidden />
+							type="file" id = 'avatar' accept = '.png, .jpg, .jpeg' hidden />
 						<img src={selectedImg ? URL.createObjectURL(selectedImg) : 
-						assets.avatar_icon} alt="" className = {`w-12 h-12 rounded-full
+								authUser?.profilePic || assets.avatar_icon}
+						 alt="" className = {`w-12 h-12 rounded-full
 							shadow-[0_0_15px_rgba(168,85,247,0.25)]`} />
 							upload profile image
 					</label>
@@ -67,8 +68,8 @@ const ProfilePage = () => {
 						</button>
 
 				</form>
-				<img className = {`max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 ${selectedImg && 'rounded full'}`} 
-					src = {assets.vibechat_icon} alt = "" />/
+				<img className = {`max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 ${selectedImg && 'rounded-full'}`} 
+					src = {authUser?.profilePic || assets.vibechat_icon} alt = "" />
 			</div>
 		</div>
 	)
