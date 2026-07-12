@@ -15,7 +15,7 @@ export const getUsersForSidebar = async (req, res)=>{
 			const messages = await Message.find({senderId: user._id, 
 				receiverId: userId, seen: false})
 			if(messages.length > 0) {
-				unseenMessages[user._id] = messages.length;
+				unseenMessages[user._id] = messages.length;s
 			}
 		})
 		await Promise.all(promises);
@@ -68,7 +68,7 @@ export const sendMessage = async (req, res) =>{
 	try {
 		const {text, image} = req.body;
 		const receiverId = req.params.id;
-		const senderId = req.user._id.upload
+		const senderId = req.user._id;
 
 		let imageUrl;
 		if(image) {
