@@ -42,7 +42,7 @@ export default {
         DEFAULT: "180ms",
       },
 },
-
+},
   
 
   plugins: [],
