@@ -10,8 +10,8 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
   const navigate = useNavigate()
 
   return (
-    <div className={`bg-[#181224]/10 h-full p-5 rounded-r-xl overflow-y-scroll
-      text-white ${selectedUser ? 'max-md:hidden' : ''}`}
+    <div className={`bg-surface/80 backdrop-blur-xl border-r border-border h-full
+     p-5 rounded-r-xl overflow-y-scroll text-text-primary ${selectedUser ? 'max-md:hidden' : ''}`}
     >
       <div className="pb-5">
         <div className="flex justify-between items-center">
@@ -20,8 +20,8 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
           <div className="relative py-2 group">
             <img src={assets.menu_icon} alt="Menu" className="max-h-5 cursor-pointer"/>
 
-            <div className="absolute top-full right-0 z-20 w-32 p-5 rounded-md bg-[#181224] 
-              border border-[#2A1F3D] text-[#F5F3FF] hidden group-hover:block">
+            <div className="absolute top-full right-0 z-20 w-32 p-5 rounded-md bg-surface 
+              border border-border text-text-primary hidden group-hover:block">
               <p onClick={() => navigate('/profile')} className="cursor-pointer text-sm">
                 Edit Profile
               </p>
@@ -33,10 +33,10 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
           </div>
         </div>
 
-        <div className = 'bg-[#221933] rounded-full flex items-center gap-2 py-3 px-4 mt-5 border border-[#2A1F3D]'>
+        <div className = 'bg-background rounded-full flex items-center gap-2 py-3 px-4 mt-5 border border-border'>
           <img src = {assets.search_icon} alt = "Search" className = 'w-3' />
-          <input type = "text" className = 'bg-transparent border-none outline-none text-white text-xs
-                          placeholder-[#B8AFCF] flex-1' placeholder='Search User...'/>
+          <input type = "text" className = 'bg-transparent border-none outline-none text-text-primary text-xs
+                          placeholder:text-text-muted flex-1' placeholder='Search User...'/>
         </div>
 
       </div>
@@ -45,22 +45,22 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
         {userDummyData.map((user, index)=> (
             <div onClick = {()=> {setSelectedUser(user)}}
               key ={index} className = {`relative flex items-center gap-2 
-              p-2 pl-4 rounded cursor-pointer hover:bg-[#2A1F3D]/40 
+              p-2 pl-4 rounded cursor-pointer hover:bg-primary/10 
               transition-all duration-200 max-sm:text-sm ${selectedUser?._id == user._id && 
-              'bg-[#2A1F3D] shadow-[0_0_15px_rgba(168,85,247,0.25)]'}`}>
+              'bg-primary/15 border-l-4 border-primary shadow-glow'}`}>
               <img src = {user?.profilePic || assets.avatar_icon} alt = ""
               className = 'w-[35px] aspect-[1/1] rounded-full' />
               <div className = 'flex flex-col leading-5'>
                 <p>{user.fullName}</p>
                 {
                   index < 3
-                  ? <span className = 'text-[#22C55E]text-xs'>Online</span>
-                  : <span className = 'text-[#BBAFCF] text-xs'>Offline</span>
+                  ? <span className = 'text-[#22C55E] text-xs'>Online</span>
+                  : <span className = 'text-text-muted text-xs'>Offline</span>
                 }
               </div>
               {index > 2 && <p className = 'absolute top-4 right-4 text-xs h-5 w-5 
-                                flex justify-center items-center rounded-full bg-[#A855F7] 
-                                text-white'>{index}</p>}
+                                flex justify-center items-center rounded-full bg-primary 
+                                text-background'>{index}</p>}
             </div>
           ))}
       </div>

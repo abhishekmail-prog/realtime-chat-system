@@ -6,40 +6,44 @@ export default {
   ],
 
   theme: {
-    extend: {
+   extend: {
       colors: {
-        background: "#050807",
-        surface: "#111815",
-        surfaceLight: "#16201C",
+        background: "#0B0F0E",
+        surface: "#141917",
+        card: "#1B211F",
 
-        primary: "#22C55E",
-        primaryHover: "#16A34A",
-        primaryDark: "#15803D",
-        glow: "#4ADE80",
+        primary: "#3DDC84",
+        primaryHover: "#31C876",
+        accent: "#7EF9A9",
 
-        border: "#1F3027",
+        border: "#29322E",
 
         text: {
-          primary: "#F8FAFC",
-          secondary: "#94A3B8",
-          muted: "#64748B",
+          primary: "#F3F6F4",
+          secondary: "#A0ABA5",
+          muted: "#6F7A74",
         },
+
+        danger: "#FF5C5C",
       },
 
       borderRadius: {
-        xl: "1rem",
-        "2xl": "1.25rem",
+        md: "10px",
+        lg: "14px",
+        xl: "18px",
       },
 
       boxShadow: {
-        glow: "0 0 20px rgba(34,197,94,.25)",
+        soft: "0 8px 24px rgba(0,0,0,0.25)",
+        glow: "0 0 12px rgba(61,220,132,0.18)",
       },
 
       transitionDuration: {
-        DEFAULT: "200ms",
+        DEFAULT: "180ms",
       },
-    },
-  },
+},
+
+  
 
   plugins: [],
 };
