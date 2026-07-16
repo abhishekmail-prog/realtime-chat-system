@@ -10,8 +10,8 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
   const navigate = useNavigate()
 
   return (
-    <div className={`bg-surface/80 backdrop-blur-xl border-r border-border h-full
-     p-5 rounded-r-xl overflow-y-scroll text-text-primary ${selectedUser ? 'max-md:hidden' : ''}`}
+    <div className={`bg-surface border-r border-border h-full
+     p-5 rounded-r-xl overflow-y-auto text-text-primary ${selectedUser ? 'max-md:hidden' : ''}`}
     >
       <div className="pb-5">
         <div className="flex justify-between items-center">
@@ -20,20 +20,22 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
           <div className="relative py-2 group">
             <img src={assets.menu_icon} alt="Menu" className="max-h-5 cursor-pointer"/>
 
-            <div className="absolute top-full right-0 z-20 w-32 p-5 rounded-md bg-surface 
+            <div className="absolute top-full right-0 z-20 w-32 p-5 rounded-lg bg-surface 
               border border-border text-text-primary hidden group-hover:block">
-              <p onClick={() => navigate('/profile')} className="cursor-pointer text-sm">
+              <p onClick={() => navigate('/profile')} className="cursor-pointer 
+                text-sm hover:text-primary transition-colors">
                 Edit Profile
               </p>
-              <hr className="my-2 border-t border-[#2A1F3D]" />
-              <p onClick={()=> logout()} className="cursor-pointer text-sm">
+              <hr className="my-2 border-t border-border" />
+              <p onClick={()=> logout()} 
+                className="cursor-pointer text-sm hover:text-primary transition-colors">
                 Logout
               </p>
             </div>
           </div>
         </div>
 
-        <div className = 'bg-background rounded-full flex items-center gap-2 py-3 px-4 mt-5 border border-border'>
+        <div className = 'bg-background rounded-lg flex items-center gap-2 py-3 px-4 mt-5 border border-border'>
           <img src = {assets.search_icon} alt = "Search" className = 'w-3' />
           <input type = "text" className = 'bg-transparent border-none outline-none text-text-primary text-xs
                           placeholder:text-text-muted flex-1' placeholder='Search User...'/>
@@ -45,7 +47,7 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
         {userDummyData.map((user, index)=> (
             <div onClick = {()=> {setSelectedUser(user)}}
               key ={index} className = {`relative flex items-center gap-2 
-              p-2 pl-4 rounded cursor-pointer hover:bg-primary/10 
+              p-2 pl-4 rounded-lg cursor-pointer hover:bg-primary/10 
               transition-all duration-200 max-sm:text-sm ${selectedUser?._id == user._id && 
               'bg-primary/15 border-l-4 border-primary shadow-glow'}`}>
               <img src = {user?.profilePic || assets.avatar_icon} alt = ""
@@ -54,7 +56,7 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
                 <p>{user.fullName}</p>
                 {
                   index < 3
-                  ? <span className = 'text-[#22C55E] text-xs'>Online</span>
+                  ? <span className = 'text-primary text-xs'>Online</span>
                   : <span className = 'text-text-muted text-xs'>Offline</span>
                 }
               </div>

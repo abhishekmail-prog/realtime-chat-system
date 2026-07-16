@@ -7,43 +7,49 @@ export default {
 
   theme: {
    extend: {
-      colors: {
-        background: "#0B0F0E",
-        surface: "#141917",
-        card: "#1B211F",
+    colors: {
+      // Base
+      background: "#050807",
+      panel: "#0A0F0D",
+      surface: "#111815",
+      elevated: "#16201C",
 
-        primary: "#3DDC84",
-        primaryHover: "#31C876",
-        accent: "#7EF9A9",
+      // Accent
+      accent: "#35E7D6",
+      accentHover: "#4FF3E4",
 
-        border: "#29322E",
-
-        text: {
-          primary: "#F3F6F4",
-          secondary: "#A0ABA5",
-          muted: "#6F7A74",
-        },
-
-        danger: "#FF5C5C",
+      // Text
+      text: {
+        primary: "#F2F5F4",
+        secondary: "#AEB8B4",
+        muted: "#7E8A86",
       },
 
-      borderRadius: {
-        md: "10px",
-        lg: "14px",
-        xl: "18px",
-      },
+      // UI
+      border: "#1E2B27",
 
-      boxShadow: {
-        soft: "0 8px 24px rgba(0,0,0,0.25)",
-        glow: "0 0 12px rgba(61,220,132,0.18)",
-      },
+      success: "#3DDC84",
+      danger: "#FF5C5C",
+    },
 
-      transitionDuration: {
-        DEFAULT: "180ms",
-      },
-},
+    borderRadius: {
+      sm: "6px",
+      md: "8px",
+      lg: "12px",
+      xl: "16px",
+    },
+
+    boxShadow: {
+      soft: "0 8px 30px rgba(0,0,0,.35)",
+      glow: "0 0 16px rgba(53,231,214,.18)",
+    },
+
+    transitionDuration: {
+      DEFAULT: "180ms",
+    },
+      
+  },
 },
   
-
   plugins: [],
 };
