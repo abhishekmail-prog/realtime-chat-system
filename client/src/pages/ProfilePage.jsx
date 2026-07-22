@@ -30,19 +30,18 @@ const ProfilePage = () => {
 	}
 
 	return (
-		<div className = 'min-h-screen bg-[#0D0916] flex items-center
-		justify-center' >
-			<div className = 'w-5/6 max-w-2xl
-					bg-[#181224]
-					backdrop-blur-2xl
-					text-[#F5F3FF]
-					border-2 border-[#2A1F3D]
-					shadow-[0_0_40px_rgba(168,85,247,0.12)]
+		<div className = 'min-h-screen bg-background flex items-center
+		justify-center p-6' >
+			<div className = 'w-full max-w-3xl
+					bg-panel
+					border
+					border-border
+					rounded-xl
 					flex items-center justify-between
 					max-sm:flex-col-reverse
-					rounded-lg'>
-				<form onSubmit = {handleSubmit} className = 'flex flex-col gap-5 p-10 flex-1' >
-					<h3 className = 'text-xl font-semibold text-[#F5F3FF]' >Profile details</h3>
+					overflow-hidden'>
+				<form onSubmit = {handleSubmit} className = 'flex flex-col gap-5 p-5 flex-1' >
+					<h3 className = 'text-2xl font-semibold text-text-primary tracking-tight' >Profile details</h3>
 					<label htmlFor = "avatar" className = 'flex items-center gap-3
 						cursor-pointer' >
 						<input onChange={(e)=>setSelectedImg(e.target.files[0])} 
@@ -50,25 +49,33 @@ const ProfilePage = () => {
 						<img src={selectedImg ? URL.createObjectURL(selectedImg) : 
 								authUser?.profilePic || assets.avatar_icon}
 						 alt="" className = {`w-12 h-12 rounded-full
-							shadow-[0_0_15px_rgba(168,85,247,0.25)]`} />
-							upload profile image
+							shadow-glow`} />
+							<div className="flex flex-col">
+								<span className="font-medium">
+									Upload profile image
+								</span>
+								<span className="text-xs text-text-muted">
+									PNG, JPG or JPEG
+								</span>
+							</div>
 					</label>
 					<input onChange={(e)=>setName(e.target.value)} value={name} 
-						type="text" required placeholder='Your name' className='p-2 bg-transparent border
-						border-[#2A1F3D] rounded-md focus:outline-none focus:ring-2
-						focus:ring-[#A855F7]' />
+						type="text" required placeholder='Your name' className='w-full px-4
+						py-3 bg-surface border border-border rounded-lg text-text-primary
+						placeholder:text-text-muted focus:border-accent focus:outline-none' />
 						<textarea onChange={(e)=>setBio(e.target.value)} value={bio}
-							placeholder="Write profile bio" required className = 'p-2 text-black
-							border border-[#2A1F3D] rounded-md focus:outline-none focus:ring-2
-							focus:ring-violet-500 ' rows={4}>	
+							placeholder="Write profile bio" required className = 'w-full px-4
+							py-3 bg-surface border border-border rounded-lg text-text-primary
+							placeholder:text-text-muted focus:border-accent focus:outline-none
+							resize-none' rows={4}>	
 						</textarea>
 
-						<button type="submit" className= 'bg-gradient-to-r from-purple-400 to-violet-600
-							text-white p-2 rounded-full text-lg cursor-pointer'>Save
+						<button type="submit" className= 'py-3 rounded-lg bg-accent hover:bg-accentHover
+							text-background font-semibold transition-colors'>Save
 						</button>
 
 				</form>
-				<img className = {`max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 ${selectedImg && 'rounded-full'}`} 
+				<img className = {`max-w-52 aspect-square rounded-full mx-8 max-sm:mt-10 ${selectedImg && 'rounded-full'}`} 
 					src = {authUser?.profilePic || assets.vibechat_icon} alt = "" />
 			</div>
 		</div>
