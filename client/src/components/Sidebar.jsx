@@ -1,11 +1,17 @@
 import React, { useContext } from 'react'
 import assets, { userDummyData } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext'
+import { AuthContext } from '../../context/AuthContext';
+import { ChatContext } from '../../context/ChatContext';
 
-const Sidebar = ({ selectedUser, setSelectedUser }) => {
- 
-  const {logout} = useContext(AuthContext)
+const Sidebar = () => {
+  
+  const {getUsers, users, selectedUser, setSelectedUser,
+         unseenMessages, setUnseenMessages } = useContext(ChatContext);
+
+  const {logout, onlineUsers} = useContext(AuthContext);
+
+  const [input, setInput] = useState(false)
 
   const navigate = useNavigate()
 
@@ -38,7 +44,7 @@ const Sidebar = ({ selectedUser, setSelectedUser }) => {
         <div className = 'bg-surface rounded-lg flex items-center gap-3 py-3 px-4 mt-6 border border-border
               focus-within:border-accent'>
           <img src = {assets.search_icon} alt = "Search" className = 'w-4 opacity-60' />
-          <input type = "text" className = 'bg-transparent border-none outline-none text-text-primary text-sm
+          <input onChange={(e)=>setInput(e.target.value)} type = "text" className = 'bg-transparent border-none outline-none text-text-primary text-sm
                           placeholder:text-text-muted flex-1' placeholder='Search User...'/>
         </div>
 
