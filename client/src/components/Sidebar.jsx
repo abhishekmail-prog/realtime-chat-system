@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import assets, { userDummyData } from '../assets/assets'
+import React, { useContext, useEffect, useState } from 'react'
+import assets from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 import { ChatContext } from '../../context/ChatContext';
@@ -11,9 +11,16 @@ const Sidebar = () => {
 
   const {logout, onlineUsers} = useContext(AuthContext);
 
-  const [input, setInput] = useState(false)
+  const [input, setInput] = useState("")
 
   const navigate = useNavigate()
+
+  const filteredUsers = input ? 
+  user.filter((user)=>user.fullName.toLowerCase().includes(input.toLowerCase())) : users;
+
+  useEffect(()=>{
+    getUsers();
+  },[onlineUsers, getUsers])
 
   return (
     <div className={`bg-panel border-r border-border h-full
@@ -51,7 +58,7 @@ const Sidebar = () => {
       </div>
 
       <div className = 'flex flex-col gap-1 mt-2'>
-        {userDummyData.map((user, index)=> (
+        {filteredUsers.map((user, index)=> (
             <div onClick = {()=> {setSelectedUser(user)}}
               key ={index} className = {`relative flex items-center gap-2 
               px-4 py-3 pl-4 rounded-lg cursor-pointer hover:bg-elevated 
@@ -62,14 +69,14 @@ const Sidebar = () => {
               <div className = 'flex flex-col leading-5'>
                 <p className='font-medium text-sm'>{user.fullName}</p>
                 {
-                  index < 3
+                  onlineUsers.includes(user._id)
                   ? <span className = 'text-accent text-xs'>Online</span>
                   : <span className = 'text-text-muted text-xs'>Offline</span>
                 }
               </div>
-              {index > 2 && <p className = 'absolute top-4 right-4 text-xs h-5 w-5 
+              {unseenMessages[user._id] > 0 && <p className = 'absolute top-4 right-4 text-xs h-5 w-5 
                                 flex justify-center items-center rounded-full bg-primary
-                                text-accent'>{index}</p>}
+                                text-accent'>{unseenMessages[user._id]}</p>}
             </div>
           ))}
       </div>
