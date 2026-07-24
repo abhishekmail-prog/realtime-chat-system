@@ -41,8 +41,8 @@ const LoginPage = () => {
 			    </h2>
 			    {currState === "Sign up" && !isDataSubmitted && (
 			    	<input  onChange={(e)=>setFullName(e.target.value)} value = {fullName}
-			    	 type = "text" className = 'w-full px-4 py-3 bg-card border border-border rounded-lg
-			    	  	text-text-primary placeholder:text-text-muted focus:border-primary focus:outline-none' 
+			    	 type = "text" className = 'w-full px-4 py-3 bg-elevated border border-border rounded-lg
+			    	  	text-text-primary placeholder:text-text-muted focus:border-acccent focus:outline-none' 
 			    	  	placeholder="Full Name" required />	
 			    )}
 
@@ -50,19 +50,19 @@ const LoginPage = () => {
 			    	<>
 			    	<input onChange={(e)=>setEmail(e.target.value)} value = {email} 
 			    		type = "email" placeholder = 'Email Address' required 
-			    		className = 'w-full px-4 py-3 bg-card border border-border rounded-lg
-			    	  	text-text-primary placeholder:text-text-muted focus:border-primary focus:outline-none'/>
+			    		className = 'w-full px-4 py-3 bg-elevated border border-border rounded-lg
+			    	  	text-text-primary placeholder:text-text-muted focus:border-acccent focus:outline-none'/>
 
 			    	<input onChange={(e)=>setPassword(e.target.value)} value = {password} 
 			    		type = "password" placeholder = 'Password' required 
-			    		className = 'w-full px-4 py-3 bg-card border border-border rounded-lg
-			    	  	text-text-primary placeholder:text-text-muted focus:border-primary focus:outline-none'/>
+			    		className = 'w-full px-4 py-3 bg-elevated border border-border rounded-lg
+			    		            text-text-primary placeholder:text-text-muted focus:border-acccent focus:outline-none'/>
 			    	</>
 			    )}
 
 			    {currState === "Sign up" && isDataSubmitted && (
 			    		<textarea onChange={(e)=>setBio(e.target.value)} value= {bio}
-			    			rows={4} className = 'w-full px-4 py-3 bg-card border border-border
+			    			rows={4} className = 'w-full px-4 py-3 bg-elevated border border-border
 			    			rounded-lg text-text-primary placeholder:text-text-muted focus:border-acccent
 			    			focus:outline-none resize-none' 
 			    			placeholder = 'provide a short bio...'
