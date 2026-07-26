@@ -24,6 +24,22 @@ const ChatContainer = () => {
 		setInput("")
 	}
 
+	// Handle sending an image
+	const handleSendImage = async (e) =>{
+		const file = e.target.files[0];
+		if(!file || !file.type.startsWith("image/")) {
+			toast.error("select an image file")
+			return;
+		}
+		const reader = new FileReader();
+
+		reader.onloadend = async ()=>{
+			await sendMessage({image: reader.result})
+			e.target.value = ""
+		}
+		reader.readAsDataURL(file)
+	}
+
 	useEffect(()=> {
 		if(scrollEnd.current) {
 			scrollEnd.current.scrollIntoView({behavior: "smooth"})
@@ -78,7 +94,7 @@ const ChatContainer = () => {
   					type='text' placeholder='Type a message...' 
   					className='flex-1 bg-transparent text-sm p-3 outline-none text-text-primary placeholder-text-text-muted'/>
 
-  				<input type='file' id='image' accept='image/png, image/jpeg' hidden />
+  				<input onChange={handleSendMessage} type='file' id='image' accept='image/png, image/jpeg' hidden />
 
   				<label htmlFor='image'>
     			<img src={assets.gallery_icon} alt='' className='w-5 mr-2 cursor-pointer opacity-70 hover:opacity-100'/>
