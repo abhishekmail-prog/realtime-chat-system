@@ -1,11 +1,28 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useContext, useState } from 'react'
 import assets, { messagesDummyData } from '../assets/assets'
 import { formatMessageTime } from '../lib/utils'
+import { ChatContext } from '../../context/ChatContext'
+import { AuthContext } from '../../context/AuthContext'
 
 
-const ChatContainer = ({selectedUser, setSelectedUser}) => {
+const ChatContainer = () => {
+
+	const { messages, selectedUser, setSelectedUser, sendMessage,
+			getMessages} = useContext(ChatContext)
+
+	const { authUser, onlineUsers} = useContext(AuthContext)
 
 	const scrollEnd = useRef()
+
+	const [input, setInput] = useState('');
+
+	// Handle sending a message
+	const handleSendMessage = async (e)=>{
+		e.preventDefault();
+		if(input.trim() === "") return null;
+		await sendMessage({text: input.trim()})
+		setInput("")
+	}
 
 	useEffect(()=> {
 		if(scrollEnd.current) {
@@ -57,7 +74,8 @@ const ChatContainer = ({selectedUser, setSelectedUser}) => {
 		<div className = 'absolute bottom-0 left-0 right-0 flex items-center gap-3 p-3'>
 
 			<div className='flex-1 flex items-center bg-surface backdrop-blur-md border border-border px-4 py-0.5 rounded-lg'>
-  				<input type='text' placeholder='Type a message...' 
+  				<input onChange={(e)=> setInput(e.target.value)} value={input} onKeyDown={(e)=>e.key === "Enter" ? handleSendMessage(e) : null} 
+  					type='text' placeholder='Type a message...' 
   					className='flex-1 bg-transparent text-sm p-3 outline-none text-text-primary placeholder-text-text-muted'/>
 
   				<input type='file' id='image' accept='image/png, image/jpeg' hidden />
@@ -72,7 +90,7 @@ const ChatContainer = ({selectedUser, setSelectedUser}) => {
 	) : (
 		<div className = 'flex flex-col items-center justify-center gap-2 text-text-muted 
 			              bg-panel max-md:hidden'>
-			<img src = {assets.vibechat_icon} className='max-w-16' alt = "" />
+			<img onClick={handleSendMessage} src = {assets.vibechat_icon} className='max-w-16' alt = "" />
 			<p className = 'text-lg font-medium text-text-primary'>Chat anytime, anywhere</p>
 		</div>
 	)
