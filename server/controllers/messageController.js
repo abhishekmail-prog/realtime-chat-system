@@ -46,7 +46,7 @@ export const getMessages = async (req, res) =>{
 
 
 	} catch(error) {
-		console.log.error(error.message);
+		console.error(error.message);
 		res.json({success: false, message: error.message})
 	}
 }
