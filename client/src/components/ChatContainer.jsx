@@ -40,20 +40,26 @@ const ChatContainer = () => {
 		reader.readAsDataURL(file)
 	}
 
+	useEffect(()=>{
+		if(selectedUser) {
+			getMessages(selectedUser._id)
+		}
+	},[selectedUser])
+
 	useEffect(()=> {
-		if(scrollEnd.current) {
+		if(scrollEnd.current && messages) {
 			scrollEnd.current.scrollIntoView({behavior: "smooth"})
 		}
-	},[])
+	},[messages])
 
 	return selectedUser ?(
 		<div className = 'h-full overflow-scroll relative bg-panel'>
 			{/*---- header ----*/}
 			<div className = 'flex items-center gap-3 py-3 mx-4 border-b border-border'>
-				<img src= {assets.profile_martin} alt = "" className = "w-8 rounded-full" />
+				<img src= {selectedUser.profilePic || assets.avatar_icon} alt = "" className = "w-8 rounded-full" />
 				<p className = 'flex-1 text-lg text-text-primary flex items-center gap-2'> 
-					Martin Johnson
-					<span className = "w-2 h-2 rounded-full bg-accent 
+					{selectedUser.fullName}
+					{onlineUsers.includes(selectedUser._id)}<span className = "w-2 h-2 rounded-full bg-accent 
 						shadow-glow"></span>
 				</p>
 				<img onClick = {()=> setSelectedUser(null)} src = {assets.arrow_icon} alt = "" 
@@ -62,7 +68,7 @@ const ChatContainer = () => {
 			</div>
 			{/*---- chat area ----*/}
 			<div className = 'flex flex-col h-[calc(100%_-_120px)] overflow-y-scroll px-6 py-4 pb-6'>
-				{messagesDummyData.map((msg, index)=>(
+				{messages.map((msg, index)=>(
 					<div key = {index} className = {`flex items-end gap-2 justify-end 
 					           ${msg.senderId !== '680f50e4f10f3ccd28382ecf9' && 'flex-row-reverse'}`}>
 					     {msg.image ? (
@@ -94,7 +100,7 @@ const ChatContainer = () => {
   					type='text' placeholder='Type a message...' 
   					className='flex-1 bg-transparent text-sm p-3 outline-none text-text-primary placeholder-text-text-muted'/>
 
-  				<input onChange={handleSendMessage} type='file' id='image' accept='image/png, image/jpeg' hidden />
+  				<input onChange={handleSendImage} type='file' id='image' accept='image/png, image/jpeg' hidden />
 
   				<label htmlFor='image'>
     			<img src={assets.gallery_icon} alt='' className='w-5 mr-2 cursor-pointer opacity-70 hover:opacity-100'/>
