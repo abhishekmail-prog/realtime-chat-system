@@ -51,7 +51,7 @@ export const ChatProvider = ({ children })=>{
 		} catch(error) {
 			toast.error(error.message);
 		}
-	}
+	};
 
 	// function to subscribe to message for selected user
 	const subscribeToMessages = async() =>{

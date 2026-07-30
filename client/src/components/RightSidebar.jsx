@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import assets, { imagesDummyData } from '../assets/assets'
+import { ChatContext } from '../../context/ChatContext'
+import { AuthContext } from '../../context/AuthContext'
 
-const RightSidebar = ({selectedUser}) => {
+const RightSidebar = () => {
+
+	const {selectedUser, messages} = useContext(ChatContext);
+	const {logout, onlineUsers} = useContext(AuthContext);
+	const [msgImages, setMsgImages] = useState([])
+
+	// Get all the images from the messages and set them to state
+	useEffect(()=>{
+		setMsgImages(
+			messages.filter(msg => msg.image).map(msg=>msg.image)
+		)
+	}, [messages])
+
 	return selectedUser && (
 		<div className = {`bg-panel text-text-primary border-l border-border w-full relative overflow-y-auto ${selectedUser ? 
 						"max-md:hidden": ""} `}>
@@ -10,8 +24,8 @@ const RightSidebar = ({selectedUser}) => {
 				className = 'w-20 aspect-[1/1] rounded-full shadow-glow' />
 				<h1 className = 'px-10 text-lg font-semibold mx-auto flex items-center
 					gap-3' >
-					<p className = 'w-2 h-2 rounded-full bg-accent
-						shadow-glow' ></p>
+					<span className={`w-2 h-2 rounded-full ${onlineUsers.includes(selectedUser._id)
+		            ? "bg-accent": "bg-text-muted"}`}/>
 					{selectedUser.fullName}
 				</h1>
 				<p className = 'px-8 text-center leading-6 text-text-secondary' >{selectedUser.bio}</p>
@@ -23,7 +37,7 @@ const RightSidebar = ({selectedUser}) => {
 				<p className = 'text-text-primary font-medium'>Media</p>
 				<div className = 'mt-2 max-h-[200px] overflow-y-scroll grid grid-cols-2
 								  gap-4' >
-					{imagesDummyData.map((url, index)=>(
+					{msgImages.map((url, index)=>(
 						<div key ={index} onClick = {()=> window.open(url)} 
 						className = 'cursor-pointer rounded-lg overflow-hidden hover:opacity-90 transition-all duration-200'>
 							<img src={url} alt = "" className = 'h-full rounded-md' /> 
