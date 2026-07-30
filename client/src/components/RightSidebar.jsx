@@ -25,8 +25,7 @@ const RightSidebar = () => {
 				<h1 className = 'px-10 text-lg font-semibold mx-auto flex items-center
 					gap-3' >
 					<span className={`w-2 h-2 rounded-full ${onlineUsers.includes(selectedUser._id)
-		            ? "bg-accent": "bg-text-muted"}`}/>
-					{selectedUser.fullName}
+   			         ? "bg-accent shadow-glow": "bg-text-muted"}`}/>
 				</h1>
 				<p className = 'px-8 text-center leading-6 text-text-secondary' >{selectedUser.bio}</p>
 			</div>
@@ -47,7 +46,7 @@ const RightSidebar = () => {
 				</div>
 			</div>
 
-			<button className='mt-8 mx-auto block w-[85%]
+			<button onclick={logout} className='mt-8 mx-auto block w-[85%]
 				py-3 rounded-lg bg-surface
 				border border-border
 				text-text-primary font-medium
