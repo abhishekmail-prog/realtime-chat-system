@@ -46,7 +46,7 @@ const RightSidebar = () => {
 				</div>
 			</div>
 
-			<button onclick={logout} className='mt-8 mx-auto block w-[85%]
+			<button onClick={()=>logout()} className='mt-8 mx-auto block w-[85%]
 				py-3 rounded-lg bg-surface
 				border border-border
 				text-text-primary font-medium
