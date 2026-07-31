@@ -21,10 +21,24 @@ export const getUsersForSidebar = async (req, res)=>{
 		await Promise.all(promises);
 		res.json({success: true, users: filteredUsers, unseenMessages})
 
-	} catch(error) {
-		console.log(error.message);
-		res.json({success: false, message: error.message})
-	}
+	} catch (error) {
+    console.log("========== CLOUDINARY ERROR ==========");
+    console.log(error);
+    console.log("Message:", error.message);
+
+    if (error.http_code) {
+        console.log("HTTP Code:", error.http_code);
+    }
+
+    if (error.error) {
+        console.log("Cloudinary Error:", error.error);
+    }
+
+    res.json({
+        success: false,
+        message: error.message
+    });
+}
 }
 
 // Get all messages for selected user
@@ -58,7 +72,8 @@ export const markMessageAsSeen = async (req, res)=>{
 		await Message.findByIdAndUpdate(id, {seen: true})
 		res.json({success: true})
 	} catch(error) {
-		console.log(error.message);
+		console.log("Cloudinary Error:");
+		console.log(error);
 		res.json({success: false, message: error.message})
 	}
 }
