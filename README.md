@@ -5,6 +5,10 @@ Vibe Chat provides secure JWT authentication, instant one-to-one messaging
 using Socket.IO, image sharing with Cloudinary, live online status,
 responsive UI, and profile management.
 
+## Live Demo
+
+🌐**Vibe Chat:** https://realtime-chat-system-2cbgbedih-abhishek-9ecb.vercel.app/login
+
 **Status:** ✅ Completed & Deployed
 
 ---
